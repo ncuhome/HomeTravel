@@ -36,7 +36,7 @@ export const naviStyle = {
   width:'81%',
   margin:'0 auto',
   marginTop:'0.2rem',
-  paddingBottom:'31%',
+  paddingBottom:'5%',
   backgroundColor:'white',
   borderRadius:'0.18rem',
   display:'flex',
@@ -46,11 +46,21 @@ export const naviStyle = {
 }
 
 export const naviTextStyle = {
-  //Todo
+  fontSize:'0.15rem',
+  textAlign:'left',
+  fontFamily:'微软雅黑',
+  paddingTop:'0.2rem',
+  paddingLeft:'0.2rem',
+  paddingRight:'0.2rem'
 }
 
-export const naviUrlStyle = {
-  //Todo
+export const chanaviTextStyle = {
+  fontSize:'0.15rem',
+  textAlign:'center',
+  fontFamily:'微软雅黑',
+  paddingTop:'0.2rem',
+  paddingLeft:'0.2rem',
+  paddingRight:'0.2rem'
 }
 
 export const contentStyle = {

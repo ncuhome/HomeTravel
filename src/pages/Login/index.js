@@ -73,7 +73,8 @@ class Login extends Component {
           'Accept':'*/*',
         }
       });
-      console.log(result.data)
+      // console.log(result.data);
+      var wrongMess = result.data.message;
       if(result.data.status === 1) {
         this.setState({
           isLoading:false
@@ -92,7 +93,7 @@ class Login extends Component {
           'Authorization':store.getState().toJS().mapReducer.token
         }
       }).then(res => {
-        console.log(res.data.base_info.xm);
+        // console.log(res.data.base_info.xm);
         const action = {
           type:'get_name',
           username:res.data.base_info.xm
@@ -104,7 +105,7 @@ class Login extends Component {
           isLoading:false
         })
         message.error({
-          content:'仔细检查一下学号和密码吧~',
+          content:wrongMess,
           duration:1
         });
       }

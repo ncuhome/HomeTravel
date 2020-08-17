@@ -63,6 +63,7 @@ class Collections extends Component {
           },
           icon:<FrownTwoTone spin twoToneColor="#B22222"/>
         })
+        return ;
       }
       const data = result.data;
       const list = data.objList;

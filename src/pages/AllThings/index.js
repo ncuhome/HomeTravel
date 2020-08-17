@@ -7,12 +7,11 @@ import {
   arrowInsideStyle,
   naviStyle,
   naviTextStyle,
-  naviUrlStyle,
+  chanaviTextStyle,
   contentStyle,
   headerStyle,
   textStyle,
   dividerStyle,
-  // listStyle,
   itemStyle,
   textItemStyle,
   fuzhu,
@@ -20,13 +19,13 @@ import {
 } from './style';
 import store from '../../store/index';
 import { CheckCircleTwoTone, CloseCircleTwoTone } from '@ant-design/icons'
-import axios from 'axios';
 
 class AllThings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list:[]
+      list:[],
+      allIn:0
     }
   }
 
@@ -34,6 +33,17 @@ class AllThings extends Component {
     this.setState({
       list:store.getState().toJS().mapReducer.list
     })
+    let num = 0;
+    store.getState().toJS().mapReducer.list.map(item => {
+      if(item.getOline) {
+        num++;
+      }
+    });
+    this.setState({
+      allIn:num
+    })
+    console.log(this.state.list);
+    console.log(this.state.allIn);
   }
 
   handleBack() {
@@ -49,8 +59,26 @@ class AllThings extends Component {
         </div>
         <div className="navi" style={naviStyle}>
           <div style={fuzhu}>
-            <div className="naviText" style={naviTextStyle}>引导文案</div>
-            <div className="naviURL" style={naviUrlStyle}>家园地址</div>
+            {
+              this.state.allIn==8?(
+                <div>
+                  <div className="naviText" style={naviTextStyle}>
+                    恭喜你，成功集齐八个物品，奖励一份小家园用心准备的小礼物！具体领取方式会在活动结束后由家园工作室官方
+                    <span style={{fontWeight:'800'}}>QQ（2459289916）</span>
+                    发布，请保存游戏截图，关注小家园发布的信息噢~
+                  </div>
+                  <div className="naviURL" style={naviTextStyle}>
+                    最后，非常欢迎大家线下体验游戏（
+                    <span style={{fontWeight:'800'}}>地址：七栋零层家园工作室</span>
+                    ），我们会常备零食等候各位小精灵的到来，一场不一样的相遇，或许会创造你想要的可能性。
+                  </div>
+                </div>
+              ):(
+                <div>
+                  <div style={chanaviTextStyle}>还差{8-this.state.allIn}个小物品没收集哦~快去仔细找找吧！</div>
+                </div>
+              )
+            }
           </div>
         </div>
         <div className="content" style={contentStyle}>
